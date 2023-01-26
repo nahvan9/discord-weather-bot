@@ -37,9 +37,9 @@ def getWeather(key, location):
     humidity = response['current']['humidity']
     cloudCoverage = response['current']['cloud']
 
-    msg = f'{conditionEmote} {condition}. Temps around {tempC} C/{tempF} F\
-    \n:dash: Wind {windDir} at {wind} mph gusting to {windGust} mph.\
-    \n:droplet: Humidity {humidity}%, and cloud coverage at {cloudCoverage}%. '
+    msg = f'{conditionEmote} {condition}. :thermometer: Temperature: {tempC} C/{tempF} F\
+    \n:dash: Wind: {windDir} at {wind} mph gusting to {windGust} mph.\
+    \n:droplet: Humidity: {humidity}%, Cloud Coverage: {cloudCoverage}%. \n '
 
     return msg
 
