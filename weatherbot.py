@@ -19,6 +19,7 @@ async def on_ready():
 
 @bot.command(name='weather')
 async def weather(ctx, arg, *args):
+    delAfter = 30
     add =' '
     for a in args:
         add += a+' '
@@ -31,13 +32,13 @@ async def weather(ctx, arg, *args):
         
     # Delete messages if in a server
     try:
-        await ctx.message.delete()
-        await ctx.send(f'The weather near {location} is...', delete_after=30)
-        await ctx.send(msg, delete_after=30)
+        await ctx.message.delete(delay=delAfter)
+        await ctx.send(f':umbrella2: The weather near {location} is...', delete_after=delAfter)
+        await ctx.send(msg, delete_after=delAfter)
     
     # Don't delete in DMs
     except:
-        await ctx.send(f'The weather near {location} is...')
+        await ctx.send(f':umbrella2: The weather near {location} is...')
         await ctx.send(msg)
 
 
