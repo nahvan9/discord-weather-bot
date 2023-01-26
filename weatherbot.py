@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from discord.ext import commands
 
 import utils 
-import userLocDB
+from database import Database
 
 intents = discord.Intents.all()
 load_dotenv()
@@ -14,11 +14,17 @@ bot = commands.Bot(command_prefix='!', case_insensitive=True, intents=intents)
 TOKEN = os.getenv('DISCORD_TOKEN')
 APIKEY= os.getenv('WEATHERAPI')
 
+USERDB_DESC = """CREATE TABLE IF NOT EXISTS users(
+                    discordID TEXT NOT NULL, 
+                    location TEXT NOT NULL
+                );"""
+                
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} is connected to Discord!')
     # Connect to sqlite db 
-
+    userNameDB = Database(".\\db\\userlocations.db", USERDB_DESC)
+    print('db created at .\\db\\userlocations.db')
 
 
 

@@ -1,4 +1,6 @@
+import os
 import sqlite3
+
 
 
 def initializeDB(dbfile):

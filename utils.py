@@ -1,14 +1,15 @@
 import os
 import requests
 
-import user_locations
+# import user_locations
 # if os.path.exists("user_locations.py"):
 #     import user_locations
     
 def getWeather(key, location):
     if location.startswith('<@'):
+        pass
         # import user_locations
-        loc = user_locations.users[location.strip()]
+        # loc = user_locations.users[location.strip()]
     else:
         loc = location
     response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={key}&q={loc}&aqi=no").json()
@@ -41,3 +42,7 @@ def getWeather(key, location):
     \n:droplet: Humidity {humidity}%, and cloud coverage at {cloudCoverage}%. '
 
     return msg
+
+def chkDir(dir):
+    if not os.path.exists(dir):
+        os.mkdir(dir)
