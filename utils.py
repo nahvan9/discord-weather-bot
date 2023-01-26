@@ -1,9 +1,13 @@
-
+import os
 import requests
 
+import user_locations
+# if os.path.exists("user_locations.py"):
+#     import user_locations
+    
 def getWeather(key, location):
     if location.startswith('<@'):
-        import user_locations
+        # import user_locations
         loc = user_locations.users[location.strip()]
     else:
         loc = location

@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from discord.ext import commands
 
 import utils 
+import userLocDB
 
 intents = discord.Intents.all()
 load_dotenv()
@@ -16,9 +17,14 @@ APIKEY= os.getenv('WEATHERAPI')
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} is connected to Discord!')
+    # Connect to sqlite db 
+
+
+
 
 @bot.command(name='weather')
 async def weather(ctx, arg, *args):
+    guildID = ctx.message.guild.id
     add =' '
     for a in args:
         add += a+' '
