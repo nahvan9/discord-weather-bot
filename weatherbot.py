@@ -24,14 +24,25 @@ async def weather(ctx, arg, *args):
         add += a+' '
     location = arg+add
 
-    msg = utils.getWeather(APIKEY, location=location)
+    try:
+        msg = utils.getWeather(APIKEY, location=location)
+    except:
+        msg = 'oops! Invalid location. '
+        
+    # Delete messages if in a server
+    try:
+        await ctx.message.delete()
+        await ctx.send(f'The weather near {location} is...', delete_after=30)
+        await ctx.send(msg, delete_after=30)
+    
+    # Don't delete in DMs
+    except:
+        await ctx.send(f'The weather near {location} is...')
+        await ctx.send(msg)
 
-    await ctx.send(f'The weather near {location} is...', delete_after=30)
-    await ctx.send(msg, delete_after=30)
-    await ctx.message.delete()
 
 @bot.command(name='origin')
 async def orogin(ctx):
     await ctx.send(f'My birthplace: https://github.com/nahvan9/discord-weather-bot')
-    
+
 bot.run(TOKEN)
