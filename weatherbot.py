@@ -23,6 +23,7 @@ async def weather(ctx, arg, *args):
     for a in args:
         add += a+' '
     location = arg+add
+
     msg = utils.getWeather(APIKEY, location=location)
 
     await ctx.send(f'The weather near {location} is...', delete_after=30)

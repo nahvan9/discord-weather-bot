@@ -1,6 +1,7 @@
 
 import requests
 
+import user_locations
 from geopy.geocoders import Nominatim
 
 
@@ -12,7 +13,11 @@ from geopy.geocoders import Nominatim
 
 
 def getWeather(key, location):
-    response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={key}&q={location}&aqi=no").json()
+    if location.startswith('<@'):
+        loc = user_locations.users[location.strip()]
+    else:
+        loc = location
+    response = requests.get(f"https://api.weatherapi.com/v1/current.json?key={key}&q={loc}&aqi=no").json()
 
     tempC = response['current']['temp_c']
     tempF = response['current']['temp_f']
