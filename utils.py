@@ -1,19 +1,9 @@
 
 import requests
 
-import user_locations
-from geopy.geocoders import Nominatim
-
-
-# def getCoords(addr):
-#     geolocator = Nominatim(user_agent="App")
-#     location = geolocator.geocode(addr)
-
-#     return location.latitude, location.longitude
-
-
 def getWeather(key, location):
     if location.startswith('<@'):
+        import user_locations
         loc = user_locations.users[location.strip()]
     else:
         loc = location

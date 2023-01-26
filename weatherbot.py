@@ -30,4 +30,8 @@ async def weather(ctx, arg, *args):
     await ctx.send(msg, delete_after=30)
     await ctx.message.delete()
 
+@bot.command(name='origin')
+async def orogin(ctx):
+    await ctx.send(f'My birthplace: https://github.com/nahvan9/discord-weather-bot')
+    
 bot.run(TOKEN)

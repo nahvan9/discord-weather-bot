@@ -1,0 +1,9 @@
+# Custom locations for users
+
+users={
+    '<@111111111111111111>': 'Raleigh, NC', #user 1234567
+    '<@222222222222222222>': 'Los Angelos, CA', #grass
+    '<@333333333333333333>': 'Newyork, NY', #carb
+    '<@>': '',
+    '<@>': '',
+}
