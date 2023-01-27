@@ -153,3 +153,4 @@ cython_debug/
 
 user_locations.py
 /db/*.db
+flow.txt
